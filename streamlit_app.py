@@ -9,15 +9,45 @@ st.set_page_config(page_title="Sentiment Analysis", page_icon="🧠")
 
 # ── PREPROCESSING LOGIC (From your Flask app) ─────────────────
 IDIOM_MAP = {
-    "can't wait": "very excited", "cannot wait": "very excited",
-    "can't get enough": "love it", "not bad": "decent good",
-    "not boring": "engaging fun", "no complaints": "fully satisfied",
-    # ... (Keep your full IDIOM_MAP here)
+    "can't wait"          : "very excited",
+    "cannot wait"         : "very excited",
+    "can't get enough"    : "love it",
+    "cannot get enough"   : "love it",
+    "can't stop playing"  : "love playing",
+    "cannot stop playing" : "love playing",
+    "can't put it down"   : "very engaging",
+    "not bad"             : "decent good",
+    "not too bad"         : "decent good",
+    "not terrible"        : "acceptable good",
+    "not boring"          : "engaging fun",
+    "not disappointed"    : "satisfied pleased",
+    "didn't disappoint"   : "satisfied pleased",
+    "doesn't disappoint"  : "satisfied pleased",
+    "never disappoints"   : "always satisfies",
+    "not a bad"           : "a decent",
+    "not the worst"       : "acceptable",
+    "nothing wrong"       : "everything fine",
+    "no complaints"       : "fully satisfied",
+    "no issues"           : "works perfectly",
+    "no problems"         : "works perfectly",
+    "not boring at all"   : "very entertaining",
+    "not slow"            : "fast responsive",
+    "not recommended"     : "dislike avoid bad",
+    "too good to be true" : "suspicious unreliable",
+    "good for nothing"    : "useless worthless",
+    "pretty bad"          : "bad poor",
+    "kind of bad"         : "bad poor",
+    "sort of bad"         : "bad poor",
 }
 
+
 NEGATION_WORDS = {
-    "not", "no", "never", "dont", "don't", "can't", "cant", 
-    "hardly", "barely", "scarcely" # ... (Keep your full set here)
+    "not", "no", "never", "neither", "nobody", "nothing",
+    "nor", "dont", "don't", "doesn't", "doesnt", "didn't",
+    "didnt", "can't", "cant", "cannot", "won't", "wont",
+    "wouldn't", "wouldnt", "isn't", "isnt", "aren't", "arent",
+    "wasn't", "wasnt", "weren't", "werent", "haven't", "havent",
+    "hasn't", "hasnt", "hardly", "barely", "scarcely"
 }
 
 def handle_double_negation(tokens: list) -> list:
